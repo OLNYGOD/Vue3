@@ -33,10 +33,15 @@ console.log(obj.fn());
 // console.log(obj3.fn());
 
 // #2-2 物件內的變數
-// const person = {
-//   name: '小明'
-// };
+const person = {
+  name: '小明'
+};
 
+const people = {
+  person: person
+}
+
+console.log(people)
 
 
 
@@ -45,6 +50,8 @@ console.log(obj.fn());
 const groupA = ['小明', '杰倫', '阿姨'];
 const groupB = ['老媽', '老爸'];
 const groupAll = groupA.concat(groupB);
+
+console.log(groupAll)
 
 // #3-2 物件擴展
 // 新增一個物件包含新方法，同時加入原有的方法
