@@ -22,8 +22,21 @@ const arr = [1, 2, 3, 4, 5];
 //   callName: function () { 
 //     console.log('1', this.name); // 1 小明
 //     setTimeout(function () {
-//       console.log('2', this.name); // 2
-//       console.log('3', this); // 3
+//       console.log('2', this.name); // 2 全域 callback function this 會指向全域
+//       console.log('3', this); // 3 window simple code this 指向window
+//     }, 10);
+//   },
+// }
+// person.callName();
+
+//箭頭含式沒有自己的this,會往上去找this所以是找到外層this 就是小明物件
+// const person = {
+//   name: '小明',
+//   callName: function () { 
+//     console.log('1', this.name); // 1 小明
+//     setTimeout(() => {
+//       console.log('2', this.name); // 2  小明
+//       console.log('3', this); // 3 person物件
 //     }, 10);
 //   },
 // }
