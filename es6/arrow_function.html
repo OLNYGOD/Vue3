@@ -49,7 +49,7 @@ const arr = [1, 2, 3, 4, 5];
 // const person = {
 //   name: '小明',
 //   callName: () => { 
-//     console.log(this.name); // 請尋找箭頭所在的作用域為何？ 全域 因箭頭函式上一層沒有其他函式
+//     console.log(this.name); // 請尋找箭頭所在的作用域為何？ 全域(外層name) 因箭頭函式上一層沒有其他函式
 //   },
 // }
 // person.callName();
@@ -73,11 +73,23 @@ const arr = [1, 2, 3, 4, 5];
 //   console.log(this.someone);
 // }
 
+//1. this 先指向給其他變數
+
 // var obj4 = {
 //   someone: '物件 4',
 //   fn() {
 //     // const vm = this; // vm 在 Vue 中意指 ViewModel
 //     setTimeout(function () {
+//       console.log(vm.someone);
+//     });
+//   }
+// }
+
+//2. 使用箭頭函式
+// var obj4 = {
+//   someone: '物件 4',
+//   fn() {
+//     setTimeout( => {
 //       console.log(this.someone);
 //     });
 //   }

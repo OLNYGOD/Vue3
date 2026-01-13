@@ -39,6 +39,7 @@ const person = {
 
 const people = {
   person: person
+  ///person
 }
 
 console.log(people)
@@ -50,6 +51,7 @@ console.log(people)
 const groupA = ['小明', '杰倫', '阿姨'];
 const groupB = ['老媽', '老爸'];
 const groupAll = groupA.concat(groupB);
+/// groupAll = [...groupA, ...groupB]
 
 console.log(groupAll)
 
@@ -64,14 +66,27 @@ const methods = {
   },
 }
 
+// 兩個method 合起來
+// const newMethods = {
+//   fn() {
+//     console.log(1);
+//   },
+//   ...methods
+// }
+
+// console.log(newMethods)
 
 // #3-3 轉成純陣列
 const doms = document.querySelectorAll('li');
-console.log(doms); // 請轉為純陣列
+console.log(doms);
+const newDoms = [...doms]; // 轉為純陣列
+console.log(newDoms);
 
 
 // #4 預設值
-// function sum(a, b) { // 請加入預設值避免錯誤
+// function sum(a, b = 2) { // 請加入預設值避免錯誤
+//   兩個預設值寫法皆可
+//   if (!b) { b = 2; }
 //   return a + b;
 // }
 // console.log(sum(1));
