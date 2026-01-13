@@ -22,8 +22,8 @@ const arr = [1, 2, 3, 4, 5];
 //   callName: function () { 
 //     console.log('1', this.name); // 1 小明
 //     setTimeout(function () {
-//       console.log('2', this.name); // 2 全域 callback function this 會指向全域
-//       console.log('3', this); // 3 window simple code this 指向window
+//       console.log('2', this.name); // 2 全域 callback function this 會指向全域（外層name)
+//       console.log('3', this); // 3 window  callback function類似 simple code this 指向window
 //     }, 10);
 //   },
 // }
@@ -49,7 +49,7 @@ const arr = [1, 2, 3, 4, 5];
 // const person = {
 //   name: '小明',
 //   callName: () => { 
-//     console.log(this.name); // 請尋找箭頭所在的作用域為何？
+//     console.log(this.name); // 請尋找箭頭所在的作用域為何？ 全域 因箭頭函式上一層沒有其他函式
 //   },
 // }
 // person.callName();
@@ -60,7 +60,7 @@ const arr = [1, 2, 3, 4, 5];
 //   name: '小明',
 //   callMe() {
 //     const callName = () => { 
-//       console.log(this.name); // 請尋找箭頭所在的作用域為何？
+//       console.log(this.name); // 請尋找箭頭所在的作用域為何？ 小明 因箭頭函式上一層為callMe函式
 //     };
 //     callName();
 //   }
