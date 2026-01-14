@@ -5,14 +5,21 @@
 </div>
 <!-- 🔥🔥練習開始🔥🔥 -->
 <script>
-// #1 物件是以傳參考的形式賦值
+// #1 物件是以傳參考(reference)的形式賦值
 // const person = {
 //   name: '小明',
 //   obj: {}
 // }
 
+// const person2 = person;
+// person2.name = '尾月'; // name: 尾月 person 和 person2 使用相同記憶體位置
 
-// #2 陷阱
+// const obj2 = person.obj;
+// obj2.name = '物件下的名稱';
+// console.log(person);  // name: 尾月, obj: name:'物件下的名稱'
+
+
+// #2 陷阱 reference 不同變數共用相同記憶體位置，一個變全部變
 // const fn = (item) => {
 //   item.name = '杰倫';
 //   // ...
@@ -22,19 +29,27 @@
 //   obj: {}
 // }
 // fn(person);
-// // ...
+// console(person) //name: '杰倫'
+// ...
 
 // console.log(person);
 // 關於：這樣的錯誤，ESLint 也有建議不要這麼做（但你是有經驗的開發者時，下方也有提供關閉的方式）
 // https://cn.eslint.org/docs/rules/no-param-reassign
 
 // #3 解決方案
-// #3-1 淺層拷貝
+// #3-1 淺層拷貝 // 只拷貝第一層 見 course/es6/淺層拷貝.jpg
 // const person = {
 //   name: '小明',
 //   obj: {}
 // }
 
+// // 方法1: Object.assign
+// const person2 = Object.assign({}, person); //淺層拷貝 person.obj 和 person2.obj 指向相同地方
+
+// // 方法2: 展開運算子
+// const person3 = { ...person }; //淺層拷貝 
+// person2.obj.age = 16;
+// console.log(person, person2, person3); // name: 小明, obj: age:16
 
 // #3-2 深層拷貝
 // const person = {
