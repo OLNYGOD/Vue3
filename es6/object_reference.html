@@ -52,10 +52,14 @@
 // console.log(person, person2, person3); // name: 小明, obj: age:16
 
 // #3-2 深層拷貝
-// const person = {
-//   name: '小明',
-//   obj: {}
-// }
+const person = {
+  name: '小明',
+  obj: {}
+}
+
+const person2 = JSON.parse(JSON.stringify(person)); //深層拷貝
+person2.obj.age = 18;
+console.log(person, person2); // person.obj 沒有 age 屬性
 
 </script>
 <!-- 🙇🙇練習結束🙇🙇 -->
