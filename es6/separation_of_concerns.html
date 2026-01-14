@@ -29,11 +29,12 @@ const component = {
     '這是第二句話',
     '這是第三句話'
   ],
-  removeData(id) {
+  removeData(id) { //事件觸發
     this.data.splice(id, 1);
     this.render();
   },
   render() { // 渲染方法
+    // const vm = this    // 把this 指向給component
     const list = document.querySelector('.component ul'); // component class 裡的ul
     let content = ''; // li 結構使用
     this.data.forEach((item, i) => {
@@ -48,16 +49,15 @@ const component = {
     btns.forEach(btn => btn.addEventListener('click', (e)=> {
       // #2 重點，移除項目是先移除資料，而不是直接移除 DOM
       // 如果要進行 AJAX 或更複雜行為，不會因為 DOM 與資料混合而難以運作
-      console.log(e)
-      const id = e.target.dataset.id; //
-      this.removeData(id)
+      const id = e.target.dataset.id; //MouseEvent 底下的target 的dataset 陣列索引位置
+      this.removeData(id) //要注意this 指向誰
     }))
   },
-  init() {
+  init() { // 生命週期
     this.render();
   }
 }
-component.init();
+component.init(); // 初次進來就渲染
 </script>
 <!-- 🙇🙇練習結束🙇🙇 -->
 </main>
