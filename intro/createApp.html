@@ -2,20 +2,33 @@
 <div class="container main my-5"><div class="row"><main class="col post">
 <!-- 章節標題 --><div class="mb-4"><h1 class="mt-0 text-muted">環境安裝</h1><small>檔名：<code>createApp.html</code></small></div>
 <!-- 🔥🔥練習開始🔥🔥 -->
-<!-- <div id="app">
+<div id="app">
   {{ counter }}
   {{ text }}
 </div>
 <script>
+const { ref } = Vue;
+
 Vue.createApp({
-  data() {
+  setup() {
+    const counter = ref(111);
+    const text = ref('這裡有一段文字');
+    
     return {
-      counter: 0,
-      text: '這裡有一段文字'
+      counter,
+      text
     }
   }
 }).mount('#app')
-</script> -->
+// Vue.createApp({
+//   data() {
+//     return {
+//       counter: 0,
+//       text: '這裡有一段文字'
+//     }
+//   }
+// }).mount('#app')
+// </script>
 <!-- 🙇🙇練習結束🙇🙇 -->
 </main>
   
