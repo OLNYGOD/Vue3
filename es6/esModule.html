@@ -19,20 +19,22 @@
 // #2 匯入方法
 // #2-1 預設匯入
 // 因為預設匯出沒有名字，所以可以為它命名
-import newComponent from './defaultExport.js';
-console.log('預設匯入的元件', newComponent);
-newComponent.init('.component'); // 初始化元件
+// import newComponent from './defaultExport.js';
+// console.log('預設匯入的元件', newComponent);
+// newComponent.init('.component'); // 初始化元件
 
 // 注意：因為傳參考的特性，因此元件無法重複利用（Vue.js 中會解決此問題）
 
 // #2-2 具名匯入
 // 單一匯入（建議寫法）
-
-
+import { a, b } from './namedExport.js';
+console.log('具名匯入的方法 a', a);
+b();
 
 // 全部匯入（不建議，錯誤較難發現）
-
-
+import * as all from './namedExport.js';
+console.log('全部匯入的方法 a', all.a);
+console.log(all.c(2, 3));
 
 // #3 SideEffect
 // sideEffect.js（沒有包含匯出的檔案）
