@@ -6,7 +6,7 @@
   <ul></ul>
 </div>
 
-<script>
+<script type="module">
 // #1 匯出匯入本一體，先掌握匯出更容易理解匯入
 // #1-1 將標籤定義 <script type="module">
 // #1-2 預設匯出：defaultExport.js
@@ -19,7 +19,9 @@
 // #2 匯入方法
 // #2-1 預設匯入
 // 因為預設匯出沒有名字，所以可以為它命名
-
+import newComponent from './defaultExport.js';
+console.log('預設匯入的元件', newComponent);
+newComponent.init('.component'); // 初始化元件
 
 // 注意：因為傳參考的特性，因此元件無法重複利用（Vue.js 中會解決此問題）
 

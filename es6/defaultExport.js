@@ -16,7 +16,7 @@ export default {
     });
     // 縮寫優化
     // const content = component.data.map(item => `<li>${item}</li>`).join('');
-    console.log(this.data)
+    console.log("data", this.data);
     list.innerHTML = content;
 
     // 加入監聽
@@ -31,4 +31,7 @@ export default {
       })
     );
   },
+  init(dom) { // 生命週期
+    this.render(dom);
+  }
 };
