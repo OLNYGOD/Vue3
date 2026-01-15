@@ -3,7 +3,7 @@
 <!-- 章節標題 --><div class="mb-4"><h1 class="mt-0 text-muted">基礎範例結構</h1><small>檔名：<code>basic_structure.html</code></small></div>
 <!-- 🔥🔥練習開始🔥🔥 -->
 
-<!-- <div id="app">
+<div id="app">
   {{ counter }}
   {{ text }} <br>
   <input type="text" v-model="text">
@@ -13,27 +13,27 @@
 </div>
 <script>
 const App = {
-  // 資料
+  // 資料 (函式)
   data() {
     return {
       counter: 0,
       text: '這裡有一段文字'
     }
   },
-  // 方法
+  // 方法 (函式)
   methods: {
     clickMe(num) {
       this.counter = this.counter + num;
     }
   },
-  // 生命週期
+  // 生命週期 (函式)
   created() {
     this.counter = 10;
   }
 }
 
 Vue.createApp(App).mount('#app');
-</script>-->
+</script>
 <!-- 🙇🙇練習結束🙇🙇 -->
 </main>
   
