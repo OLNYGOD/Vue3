@@ -36,7 +36,8 @@ import * as all from './namedExport.js';
 console.log('全部匯入的方法 a', all.a);
 console.log(all.c(2, 3));
 
-// #3 SideEffect
+// #3 SideEffect 匯入 
+// 主要使用在lib 匯入
 // sideEffect.js（沒有包含匯出的檔案）
 import './sideEffect.js';
 console.log('SideEffect 檔案已經執行', $);
