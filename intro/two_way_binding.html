@@ -34,38 +34,45 @@
 <script>
 const { ref, onMounted } = Vue;
 const App = {
-  // setup() {
-  //   // 資料
-  //   const temp = {};
-  //   const name = '';
-  //   const imageUrl = '';
+  setup() {
+    // 資料
+    const temp = ref({
+      name: '',
+      imageUrl: ''
+    });
 
-  //   // 方法
-  //   // const clickMe = (num) => {
-
-  //   // };
+    // 方法
+    const confirmEdit = () => {
+      console.log(temp.value);
+    };
     
-  //   // 生命週期
-  //   onMounted(() => {
-  //   });
+    // 生命週期
+    onMounted(() => {
+      temp.value.imageUrl = 'https://images.unsplash.com/photo-1602526430780-782d6b1783fa?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+    });
     
-  //   return {
-  //   };
-  // }
-  data() {
     return {
-      temp: {
-        name: '',
-        imageUrl: 'https://images.unsplash.com/photo-1602526430780-782d6b1783fa?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-      }
-    }
-  },
-  methods: {
-    confirmEdit() {
-      console.log(this.temp)
-    }
-  },
+      temp,
+      confirmEdit
+    };
+  }
 };
+
+// const App = {
+//   data() {
+//     return {
+//       temp: {
+//         name: '',
+//         imageUrl: 'https://images.unsplash.com/photo-1602526430780-782d6b1783fa?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+//       }
+//     }
+//   },
+//   methods: {
+//     confirmEdit() {
+//       console.log(this.temp)
+//     }
+//   },
+// };
 
 Vue.createApp(App).mount('#app');
 </script>
