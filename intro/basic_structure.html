@@ -12,27 +12,55 @@
   >按我</button>
 </div>
 <script>
+const { ref, onMounted } = Vue;
+
 const App = {
-  // 資料 (函式)
-  data() {
+  setup() {
+    // 資料
+    const counter = ref(0);
+    const text = ref('這裡有一段文字');
+    
+    // 方法
+    const clickMe = (num) => {
+      counter.value = counter.value + num;
+    };
+    
+    // 生命週期
+    onMounted(() => {
+      counter.value = 10;
+    });
+    
     return {
-      counter: 0,
-      text: '這裡有一段文字'
-    }
-  },
-  // 方法 (函式)
-  methods: {
-    clickMe(num) {
-      this.counter = this.counter + num;
-    }
-  },
-  // 生命週期 (函式)
-  created() {
-    this.counter = 10;
+      counter,
+      text,
+      clickMe
+    };
   }
-}
+};
 
 Vue.createApp(App).mount('#app');
+
+// const App = {
+//   // 資料 (函式)
+//   data() {
+//     return {
+//       counter: 0,
+//       text: '這裡有一段文字'
+//     }
+//   },
+//   // 方法 (函式)
+//   methods: {
+//     clickMe(num) {
+//       this.counter = this.counter + num;
+//     }
+//   },
+//   // 生命週期 (函式)
+//   created() {
+//     this.counter = 10;
+//   }
+// }
+
+// Vue.createApp(App).mount('#app');
 </script>
 <!-- 🙇🙇練習結束🙇🙇 -->
 </main>
