@@ -6,7 +6,7 @@
 <div id="app">
   {{ temp }}
   <form>
-    <!-- 雙向綁定 -->
+    <!-- 雙向綁定 v-model -->
     <div class="mb-3">
       <label for="productName" class="form-label">產品名稱</label>
       <input type="text" id="productName"
@@ -14,9 +14,9 @@
         v-model="temp.name"
       >
     </div>
-    <!-- v-on:click畫面上更新 -->
+    <!-- v-on:click事件監聽，使用者操作 -->
     <div class="mb-3">
-      <!-- html 屬性 v-bind 綁定data -->
+      <!-- html 屬性 v-bind data -> view -->
       <img v-bind:src="temp.imageUrl" class="img-fluid" alt="">
       <label for="productImage"
       class="form-label">產品圖片</label>
