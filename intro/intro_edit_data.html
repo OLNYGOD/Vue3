@@ -24,8 +24,8 @@
           <input type="checkbox" v-model="item.onStock">
         </td>
         <td>
-          <button type="button" class="btn btn-outline-primary"
-          >修改</button>
+          <button type="button" class="btn btn-outline-primary" 
+          v-on:click="editItem(item)">修改</button>
         </td>
       </tr>
     </tbody>
@@ -76,11 +76,28 @@ const App = {
     }
   },
   methods: {
+    editItem(product) {
+      // 使用淺層拷貝避免修改資料時畫面上直接跟著變動
+      this.temp = { ...product};
+      console.log('product', product)
+    },
     confirmEdit() {
-      this.temp.id = new Date().getTime();
-      this.temp.onStock = false;
-      this.products.push(this.temp);
-      this.temp = {};
+      // 新增資料
+      if (!this.temp.id) {
+        this.temp.id = new Date().getTime();
+        this.temp.onStock = false;
+        this.products.push(this.temp);
+        this.temp = {};
+      } 
+      // 修改資料 用for 迴圈確定products列表中id 和修改temp 的id相同
+      else {
+        this.products.forEach((element, i) => {
+            if(element.id === this.temp.id) {
+              this.products[i]= this.temp;
+              this.temp = {};
+            }
+        });
+      }
     }
   },
   created() {
