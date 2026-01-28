@@ -4,8 +4,8 @@
 <!-- 🔥🔥練習開始🔥🔥 -->
 <div id="app">
   <h3>字串 v-text 與 <code v-pre>{{}}</code> (Mustache)</h3>
-  <p>在 吃早餐</p>
-  <p><span></span>在<span ></span>吃早餐</p>
+  <p>{{ name }}在{{ position }}吃早餐</p>
+  <p><strong v-text="name"></strong>在<span v-text="position"></span>吃早餐</p>
   <input type="text" v-model="name">
 
   <hr>
