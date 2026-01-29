@@ -6,13 +6,19 @@
 <div id="app">
   <h3>呈現多筆資料於畫面上 v-for</h3>
   <p>菜單</p>
-  <ul>
-    
+  <ul> <strong>索引值 名稱 價格</strong>
+     <li v-for="(item, index) in products">
+       <!-- index 指的是 位置 array格式-->
+      {{index + 1}} - {{item}}\\{{item.name}} / {{item.price}} 元
+    </li>>
   </ul>
 
   <h3>物件回圈</h3>
   <ul>
-    
+    <!-- index 指的是 chineseOmelette等 dir格式-->
+    <li v-for="(item, index) in productsObj">
+      {{index}} - {{item}}\\ {{item.name}} / {{item.price}} 元
+    </li>>
   </ul>
 
   <h3>純數值回圈</h3>
