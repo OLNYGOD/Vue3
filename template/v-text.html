@@ -11,11 +11,12 @@
   <hr>
   <h3>原始字串 v-html</h3>
   {{ rawHtml }}
+  <div v-html="rawHtml"></div>
   <p><a href="https://v3.cn.vuejs.org/api/directives.html#v-html">注意事項</a></p>
 
   <hr>
   <h3>單次綁定 v-once</h3>
-  <p>{{ name }}在{{ position }}吃早餐</p>
+  <p v-once>{{ name }}在{{ position }}吃早餐</p>
   <input type="text" v-model="name">
 
   <hr>
