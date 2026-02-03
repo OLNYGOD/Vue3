@@ -42,20 +42,18 @@
   <h3>進階技巧：在 template 標籤使用 v-for</h3>
   <table class="table">
     <tbody>
-      <tr >
-        <th rowspan="2">1</th>
-        <td colspan="2">
-          飯糰
-        </td>
-      </tr>
-      <tr>
-        <td>
-          30元
-        </td>
-        <td>
-          不可素食
-        </td>
-      </tr>
+      <template v-for="(item, i) in products" v-bind:key="item.name">
+        <tr>
+          <th rowspan="2">{{ i + 1 }}</th>
+          <td colspan="2">{{ item.name }}</td>
+        </tr>
+        <tr>
+          <td>{{ item.price }} 元</td>
+          <td>
+            {{ item.vegan ? '素食' : '葷食' }}
+          </td>
+        </tr>
+      </template>
     </tbody>
   </table>
   <p><a href="https://cn.vuejs.org/guide/essentials/list.html#v-for-on-template">參考介紹</a></p>
