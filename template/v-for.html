@@ -29,7 +29,8 @@
   <h3>v-for 與 key</h3>
   <p>菜單</p>
   <ul>
-    <li v-for="(item, key) in products">
+    <!-- v-bind for 迴圈綁定特定key使用 -->
+    <li v-for="(item, key) in products" v-bind:key="item.name">
       {{ key }} - {{ item.name}} / {{ item.price }} 元
       <input type="text">
     </li>
