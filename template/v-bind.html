@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>屬性綁定</title><meta name="viewport" content="width=device-width, initial-scale=1"><link href="images/favicon.ico" rel="shortcut icon"><meta charset="UTF-8"><script src="/javascripts/vendor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.js"></script></head><body class="bg-lighter">
+ <!DOCTYPE html><html><head><title>屬性綁定</title><meta name="viewport" content="width=device-width, initial-scale=1"><link href="images/favicon.ico" rel="shortcut icon"><meta charset="UTF-8"><script src="/javascripts/vendor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.js"></script></head><body class="bg-lighter">
 <div class="container main my-5"><div class="row"><main class="col post">
 <!-- 章節標題 --><div class="mb-4"><h1 class="mt-0 text-muted">屬性綁定</h1><small>檔名：<code>v-bind.html</code></small></div>
 <!-- 🔥🔥練習開始🔥🔥 -->
@@ -6,17 +6,18 @@
 <div id="app">
   <h3>綁定屬性 v-bind</h3>
   <p>{{ breakfastShop.name }}</p>
-  <img src="https://images.unsplash.com/photo-1600182610361-4b4d664e07b9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="square-img" alt="">
+  <img v-bind:src="breakfastShop.imgUrl" class="square-img" v-bind:title="breakfastShop.name" alt="">
 
   <h3>縮寫形式 <code>:</code></h3>
-  <img class="square-img" alt="">
+  <img v-bind:src="breakfastShop.imgUrl" class="square-img" :title="breakfastShop.name" alt="">
+
 
   <hr>
   <h3>更多屬性綁定</h3>
   小明還想點餐：
   <form action="">
     <input type="text" value="我要吃蘿蔔糕">
-    <button type="submit" disabled>送出</button>
+    <button type="submit" v-bind:disabled="isFull">送出</button>
   </form>
 
   <button type="button" v-on:click="change('isFull')">狀態切換</button>
@@ -27,7 +28,7 @@
     <tbody>
       <tr v-for="item in products" :key="item.imgUrl">
         <td>
-          <img class="square-img" alt="">
+          <img :src="item.imgUrl" class="square-img" :alt="item.name">
         </td>
         <td>
           {{ item.name }}
@@ -37,8 +38,8 @@
         </td>
         <td>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="aa">
-            <label class="form-check-label" for="aa">
+            <input class="form-check-input" type="checkbox" value="" v-bind:id="item.name">
+            <label class="form-check-label" :for="item.name">
               我要這個
             </label>
           </div>
@@ -54,14 +55,14 @@
   <br>
   <img src="" alt=""
   >
-  {{ `${breakfastShop.resizeImg}&w=${imageSize}` }}
-  
+  {{ `${breakfastShop.resizeImg}&w=${imageSize}` }} <br>
+  <img :src="`${breakfastShop.resizeImg}&w=${imageSize}`" alt="">
   <hr>
   <h3>動態屬性綁定(注意大小寫)</h3>
   <button type="button"
   v-on:click="dynamic = dynamic === 'disabled' ? 'readonly':'disabled'">切換為 {{ dynamic }}</button>
   <br>
-  <input type="text" :value="name">
+  <input type="text" :[dynamic] :value="name">
 
   <hr>
   <h3>預告：元件的資料傳遞亦是使用 v-bind</h3>
