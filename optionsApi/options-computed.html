@@ -17,7 +17,7 @@
   <ul>
     <li v-for="item in carts">{{ item.name }}</li>
   </ul>
-  total 的值：<br>
+  total 的值：{{ total }}<br>
 
   <h3>Computed 常見技巧 - 搜尋</h3>
   <input type="search" v-model="search">
@@ -67,13 +67,30 @@ const App = {
       sum: 0,
     }
   },
+  computed: {
+    total() {
+      let total = 0;
+      this.carts.forEach(item => {
+        total += item.price;
+      });
+      this.sum = total;
+      return total;
+      // return this.carts.reduce((acc, cur) => acc + cur.price, 0)
+    },
+    filterProducts() {
+      return this.products.filter(product => {
+        // console.log(product.name, this.search);
+        return product.name.includes(this.search);
+      })
+    },
+  },
   methods: {
     addToCart(product) {
       this.carts.push(product)
     },
   },
   created() {
-    console.log(this);
+    // console.log(this);
   }
 };
 Vue.createApp(App).mount('#app');
