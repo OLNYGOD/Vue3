@@ -8,11 +8,11 @@
     <div class="row gx-3 bg-light py-3">
       <div class="col-md-4">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action">
-            <h6 class="card-title mb-1">珍珠鮮奶茶</h6>
+          <a href="#" class="list-group-item list-group-item-action" v-for="(product, index) in products" :key="index" @click.prevent="selectProduct(product)">
+            <h6 class="card-title mb-1">{{ product.name }}</h6>
             <div class="d-flex align-items-center justify-content-between">
-              <p class="mb-0"><small>Pearl Milk Tea</small></p>
-              <p class="mb-0"><small>NT$ 60</small></p>
+              <p class="mb-0"><small>{{product.engName}}</small></p>
+              <p class="mb-0"><small>NT$ {{product.price}}</small></p>
             </div>
           </a>
         </div>
@@ -23,27 +23,27 @@
           <div class="card-body px-4">
             <div class="mb-3">
               <label for="productNum" class="form-label">數量</label>
-              <input type="number" class="form-control" id="productNum" placeholder="數量" min="0">
+              <input type="number" class="form-control" id="productNum" placeholder="數量" min="0" v-model="productNum" @change="selectNumber">
             </div>
             <div class="mb-3">
               <label for="productNum" class="form-label d-block">冰塊*</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" name="iceType" type="radio" id="正常冰">
-                <label class="form-check-label" for="正常冰">正常冰</label>
+              <div class="form-check form-check-inline" v-for="(ice, index) in iceType" :key="index">
+                <input class="form-check-input" name="iceType" type="radio" :id="ice" :value="ice">
+                <label class="form-check-label" :for="ice">{{ ice }}</label>
               </div>
             </div>
             <div class="mb-3">
               <label for="productNum" class="form-label d-block">甜度*</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" name="sugarType" type="radio" id="全糖">
-                <label class="form-check-label" for="全糖">全糖</label>
+              <div class="form-check form-check-inline" v-for="(sugar, index) in sugarType" :key="index">
+                <input class="form-check-input" name="sugarType" type="radio" :id="sugar" :value="sugar">
+                <label class="form-check-label" :for="sugar">{{ sugar }}</label>
               </div>
             </div>
             <div class="mb-3">
               <label for="productNum" class="form-label d-block">加料</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="椰果">
-                <label class="form-check-label" for="椰果">椰果</label>
+              <div class="form-check form-check-inline" v-for="(topping, index) in toppingsType" :key="index">
+                <input class="form-check-input" type="checkbox" :id="topping" :value="topping">
+                <label class="form-check-label" :for="topping">{{ topping }}</label>
               </div>
             </div>
             <div class="mb-3">
@@ -52,7 +52,7 @@
             </div>
             <div class="d-flex gap-2">
               <button class="btn btn-outline-primary w-100" type="button">取消</button>
-              <button class="btn btn-primary w-100" type="button">加入</button>
+              <button class="btn btn-primary w-100" type="button" @click.prevent="addProduct(product)">加入</button>
             </div>
           </div>
         </div>
@@ -131,6 +131,9 @@
 const App = {
   data() {
     return {
+      tempSelected: '', // 用來暫存目前選擇的飲品資訊
+      orderTotal: 0,
+      orderList: [],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
       sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
       toppingsType: ['珍珠', '粉條', '小粉圓', '椰果', '芋頭'],
@@ -248,6 +251,30 @@ const App = {
       ],
     }
   },
+
+  methods: {
+    selectNumber() {
+      this.tempSelected.count = this.productNum;
+      console.log('選擇的數量：', this.tempSelected.count);
+    },
+
+    selectProduct(product) {
+      console.log('選擇的飲品：', product);
+    },
+
+     addProduct(product) {
+      console.log('加入飲品：', product);
+      this.orderList.push({
+        name: this.tempSelected,
+        ice: product.defaults.ice,
+        sugar: product.defaults.sugar,
+        toppings: product.defaults.toppings,
+        price: product.price,
+        notice: document.getElementById('productNotice').value,
+      });
+    }
+
+  }
 };
 
 Vue.createApp(App).mount('#app');
